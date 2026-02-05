@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links Beauty & Health Center | Information Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'brand-navy': '#1a2a3a',
+                'brand-gold': '#c5a059',
+                'brand-cream': '#fdfbf7',
+              }
+            }
+          }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-navy: #1a2a3a;
+            --brand-gold: #c5a059;
+            --brand-cream: #fdfbf7;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--brand-cream);
+            color: var(--brand-navy);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo-links {
+            color: var(--brand-navy);
+            font-size: 2.5rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .logo-subtitle {
+            color: var(--brand-gold);
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .btn-outline-gold {
+            border: 1px solid var(--brand-gold);
+            color: var(--brand-gold);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-gold:hover {
+            background-color: var(--brand-gold);
+            color: white;
+        }
+
+        .nav-link {
+            position: relative;
+            padding-bottom: 2px;
+            cursor: pointer;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--brand-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .page-content {
+            display: none;
+            opacity: 0;
+        }
+
+        .page-content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .lang-btn {
+            cursor: pointer;
+            transition: color 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .lang-btn.active {
+            color: var(--brand-gold);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        /* Dropdown Styling */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 180px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            padding: 8px 0;
+            z-index: 100;
+            border: 1px solid #f0f0f0;
+        }
+
+        .group:hover .dropdown-menu {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--brand-cream);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--brand-gold);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex flex-col" onclick="navigateTo('home')">
+                <span class="logo-links serif font-bold">Links</span>
+                <span class="logo-subtitle" data-i18n="nav-subtitle">Beauty & Health Center</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8 items-center">
+                <div class="flex space-x-3 mr-8 border-r border-gray-200 pr-8">
+                    <span class="lang-btn active" onclick="setLanguage('en')">EN</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="lang-btn" onclick="setLanguage('vn')">VN</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="lang-btn" onclick="setLanguage('kr')">KR</span>
+                </div>
+                <a onclick="navigateTo('home')" class="nav-link text-sm font-medium tracking-wide" data-i18n="nav-home">Home</a>
+                <a onclick="navigateTo('about')" class="nav-link text-sm font-medium tracking-wide" data-i18n="nav-about">About Us</a>
+                
+                <div class="group relative">
+                    <a class="nav-link text-sm font-medium tracking-wide flex items-center" data-i18n="nav-brands">
+                        Our Brands
+                        <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a onclick="navigateTo('olylife')" class="block px-6 py-3 text-sm text-gray-700 hover:bg-brand-cream hover:text-brand-gold cursor-pointer">Hyzen</a>
+                        <a onclick="navigateTo('olylife')" class="block px-6 py-3 text-sm text-gray-700 hover:bg-brand-cream hover:text-brand-gold cursor-pointer">Olylife</a>
+                    </div>
+                </div>
+
+                <a onclick="navigateTo('home'); setTimeout(() => document.getElementById('contact').scrollIntoView({behavior: 'smooth'}), 100)" class="btn-outline-gold px-6 py-2 rounded-full text-sm font-bold shadow-sm" data-i18n="nav-contact">Inquire Now</a>
+            </div>
+
+            <button class="md:hidden text-brand-navy flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MAIN HOME PAGE CONTENT -->
+    <div id="page-home" class="page-content active">
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+                <div id="hero-text">
+                    <span class="text-brand-gold font-semibold tracking-[0.3em] uppercase text-xs mb-4 block" data-i18n="hero-slogan">Inner Health. True Beauty.</span>
+                    <h1 class="text-5xl md:text-7xl leading-tight mb-6">
+                        <span data-i18n="hero-title-1">Advanced</span> 
+                        <span class="italic text-brand-gold" data-i18n="hero-title-2">Wellness</span> 
+                        <span data-i18n="hero-title-3">Technology</span>
+                    </h1>
+                    <p class="text-gray-600 text-lg mb-8 max-w-lg leading-relaxed" data-i18n="hero-desc">
+                        Exclusively featuring Hyzen Hydrogen systems and Olylife cellular therapy. Experience the science of longevity and the art of self-care.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a onclick="navigateTo('about')" class="bg-brand-navy text-white px-8 py-4 rounded-full font-bold shadow-xl hover:bg-brand-gold transition-colors cursor-pointer" data-i18n="btn-explore">Explore Our Story</a>
+                        
+                        <div class="group relative">
+                            <button class="border border-brand-navy text-brand-navy px-8 py-4 rounded-full font-bold hover:bg-brand-navy hover:text-white transition-all text-center flex items-center" data-i18n="nav-brands">
+                                Our Brands
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="dropdown-menu mt-2 w-full">
+                                <a onclick="navigateTo('olylife')" class="block px-6 py-3 text-sm text-gray-700 hover:bg-brand-cream hover:text-brand-gold cursor-pointer">Hyzen</a>
+                                <a onclick="navigateTo('olylife')" class="block px-6 py-3 text-sm text-gray-700 hover:bg-brand-cream hover:text-brand-gold cursor-pointer">Olylife</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative" id="hero-image">
+                    <div class="absolute -top-10 -left-10 w-64 h-64 bg-yellow-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+                    <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" style="animation-delay: 2s"></div>
+                    <div class="rounded-2xl overflow-hidden shadow-2xl transform rotate-2 bg-white">
+                        <img src="https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=800" alt="Tech Wellness" class="w-full h-[500px] object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Home Product Preview -->
+        <section id="brands" class="py-24 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl reveal mb-16" data-i18n="brands-title">Authorized Partnerships</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                    <!-- Sample Hyzen -->
+                    <div id="hyzen-sample" class="reveal">
+                        <div class="bg-brand-cream rounded-3xl p-4 mb-8 shadow-sm group overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800" class="w-full h-80 object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-700 group-hover:scale-105" alt="Hyzen Sample">
+                        </div>
+                        <h4 class="text-brand-gold font-bold tracking-widest text-xs uppercase mb-2">Hyzen Series</h4>
+                        <h3 class="text-2xl mb-4 font-bold" data-i18n="hyzen-name">Hydrogen Water Systems</h3>
+                        <p class="text-gray-500 text-sm max-w-sm mx-auto mb-6" data-i18n="hyzen-sample-desc">Advanced molecular hydrogen generation for cellular hydration and recovery.</p>
+                        <button onclick="navigateTo('olylife')" class="text-brand-gold font-bold text-sm hover:underline" data-i18n="nav-brands">Learn More</button>
+                    </div>
+
+                    <!-- Sample Olylife -->
+                    <div id="olylife-preview" class="reveal" style="transition-delay: 0.2s">
+                        <div class="bg-brand-cream rounded-3xl p-4 mb-8 shadow-sm group overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?auto=format&fit=crop&q=80&w=800" class="w-full h-80 object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-700 group-hover:scale-105" alt="Olylife Sample">
+                        </div>
+                        <h4 class="text-brand-gold font-bold tracking-widest text-xs uppercase mb-2">Olylife Series</h4>
+                        <h3 class="text-2xl mb-4 font-bold" data-i18n="olylife-name">Tera-P90 Cellular Tech</h3>
+                        <p class="text-gray-500 text-sm max-w-sm mx-auto mb-6" data-i18n="olylife-sample-desc">Utilizing pulsed electromagnetic fields and terahertz frequencies for total body balance.</p>
+                        <button onclick="navigateTo('olylife')" class="text-brand-gold font-bold text-sm hover:underline" data-i18n="nav-brands">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Section -->
+        <section id="contact" class="py-24 bg-brand-navy text-white overflow-hidden">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/2 reveal">
+                    <h2 class="text-5xl mb-8 leading-tight" data-i18n="info-title">Consultation & Expertise</h2>
+                    <p class="text-gray-400 mb-8" data-i18n="info-p">Personalized consultation for advanced wellness devices.</p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="border-t border-white/10 pt-4">
+                            <h4 class="font-bold text-brand-gold mb-1" data-i18n="stat-1">100% Genuine</h4>
+                            <p class="text-xs text-gray-500" data-i18n="stat-1-desc">Authorized distributor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 bg-white/5 p-10 rounded-3xl border border-white/10 text-center reveal">
+                    <h3 class="text-2xl mb-6 serif" data-i18n="contact-card-title">How to Inquire</h3>
+                    <div class="bg-brand-gold text-white p-4 rounded-xl font-bold cursor-pointer hover:bg-white hover:text-brand-navy transition-all mb-4">
+                        WhatsApp / Zalo Inquiry
+                    </div>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-widest" data-i18n="footer-rights">Information only portal</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- OLYLIFE PAGE CONTENT -->
+    <div id="page-olylife" class="page-content py-32">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <h4 class="text-brand-gold font-bold tracking-widest text-xs uppercase mb-2">Olylife International</h4>
+                <h2 class="text-5xl mb-6 font-bold" data-i18n="olylife-page-title">Cellular Energy Technology</h2>
+                <div class="w-24 h-1 bg-brand-gold mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+                <!-- Tera P90 -->
+                <div class="reveal">
+                    <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
+                        <div class="bg-brand-cream rounded-2xl overflow-hidden mb-8 h-80 flex items-center justify-center">
+                             <img src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover" alt="Olylife Tera P90">
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4" data-i18n="olylife-name">Tera-P90</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6" data-i18n="olylife-desc">Harnessing Tera-P90 and PEMF technology. Olylife devices are designed to revitalize cells, improve circulation, and restore your body's natural balance.</p>
+                        <ul class="space-y-3 text-sm text-gray-500 mb-8">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>PEMF Technology</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Terahertz Frequencies</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Bio-Resonance Recovery</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tera P90+ -->
+                <div class="reveal" style="transition-delay: 0.2s">
+                    <div class="bg-brand-navy text-white rounded-3xl p-8 shadow-xl border border-white/10 overflow-hidden">
+                        <div class="bg-white rounded-2xl overflow-hidden mb-8 h-80 flex items-center justify-center relative">
+                            <img src="https://image2url.com/r2/default/images/1770278530258-f55a3032-830d-4175-b847-18324edd6c30.png" class="w-full h-full object-contain p-4" alt="Tera P90+">
+                        </div>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-3xl font-bold" data-i18n="tera-name">Tera-P90+</h3>
+                            <span class="bg-brand-gold text-white text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-widest">Enhanced</span>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed mb-6" data-i18n="tera-desc">Enhanced resonance technology for deep-cell therapy and total body restoration. The Tera-P90+ represents the next generation of professional wellness intervention.</p>
+                        <ul class="space-y-3 text-sm text-gray-400 mb-8">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Advanced Output Stability</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Enhanced Pulse Depth</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Professional Grade Calibration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-20 text-center reveal">
+                <button onclick="navigateTo('home')" class="btn-outline-gold px-10 py-4 rounded-full font-bold uppercase tracking-widest text-xs">Return to Portal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT US PAGE CONTENT -->
+    <div id="page-about" class="page-content py-32">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16 reveal">
+                    <h4 class="text-brand-gold font-bold tracking-widest text-xs uppercase mb-2" data-i18n="nav-about">About Us</h4>
+                    <h2 class="text-4xl mb-4">Links Beauty & Health Center</h2>
+                    <h3 class="serif text-xl italic text-brand-gold" data-i18n="hero-slogan">Inner Health. True Beauty.</h3>
+                    <div class="w-20 h-1 bg-brand-gold mx-auto mt-6"></div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-12 text-center md:text-left">
+                    <div class="reveal">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-8" data-i18n="about-intro">
+                            At Links Beauty & Health Center, we believe that Inner Health. True Beauty. We are where proactive wellness meets holistic beauty—offering safe, natural, and sustainable solutions for you and your family.
+                        </p>
+                        <p class="text-lg text-gray-700 leading-relaxed" data-i18n="about-philosophy">
+                            With a dedicated team and a root-cause approach to care, we don’t just help you look better on the outside—we help you become healthier on the inside, so your beauty can last over time.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                        <div class="p-8 bg-brand-cream rounded-2xl reveal border border-brand-gold/20 shadow-sm">
+                            <h4 class="font-bold text-sm tracking-widest text-brand-navy mb-4" data-i18n="mission-label">MISSION</h4>
+                            <p class="text-gray-600 text-sm leading-loose uppercase" data-i18n="mission-text">
+                                TO EMPOWER INDIVIDUALS AND FAMILIES TO ACHIEVE LASTING WELLNESS AND BEAUTY THROUGH NATURAL, SAFE, AND EFFECTIVE SOLUTIONS THAT NURTURE BOTH INNER HEALTH AND OUTER RADIANCE.
+                            </p>
+                        </div>
+                        <div class="p-8 bg-brand-navy text-white rounded-2xl reveal shadow-xl">
+                            <h4 class="font-bold text-sm tracking-widest text-brand-gold mb-4" data-i18n="vision-label">VISION</h4>
+                            <p class="text-gray-300 text-sm leading-loose uppercase" data-i18n="vision-text">
+                                TO BECOME A TRUSTED LEADER IN HOLISTIC BEAUTY AND WELLNESS, RECOGNIZED FOR TRANSFORMING LIVES BY COMBINING HEALTH, BEAUTY, AND PROACTIVE SELF-CARE FOR EVERY COMMUNITY WE SERVE.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 reveal">
+                        <h4 class="font-bold text-sm tracking-widest text-brand-navy mb-10 text-center uppercase" data-i18n="values-label">VALUES</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                            <div class="border-l-2 border-brand-gold pl-4">
+                                <h5 class="font-bold text-brand-navy mb-2 uppercase" data-i18n="v1-title">Integrity</h5>
+                                <p class="text-xs text-gray-500" data-i18n="v1-desc">Upholding trust and transparency in every service and product.</p>
+                            </div>
+                            <div class="border-l-2 border-brand-gold pl-4">
+                                <h5 class="font-bold text-brand-navy mb-2 uppercase" data-i18n="v2-title">Excellence</h5>
+                                <p class="text-xs text-gray-500" data-i18n="v2-desc">Commitment to the highest standards of quality and care.</p>
+                            </div>
+                            <div class="border-l-2 border-brand-gold pl-4">
+                                <h5 class="font-bold text-brand-navy mb-2 uppercase" data-i18n="v3-title">Holistic Care</h5>
+                                <p class="text-xs text-gray-500" data-i18n="v3-desc">Focusing on the whole person, not just appearances.</p>
+                            </div>
+                            <div class="border-l-2 border-brand-gold pl-4">
+                                <h5 class="font-bold text-brand-navy mb-2 uppercase" data-i18n="v4-title">Sustainability</h5>
+                                <p class="text-xs text-gray-500" data-i18n="v4-desc">Offering solutions that are safe, natural, and long-lasting.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-20 text-center reveal">
+                    <button onclick="navigateTo('home')" class="btn-outline-gold px-10 py-4 rounded-full font-bold uppercase tracking-widest text-xs">Back to Home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white pt-20 pb-10 border-t border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start mb-16 gap-12">
+                <div>
+                    <div class="flex flex-col mb-6" onclick="navigateTo('home')">
+                        <span class="logo-links serif font-bold">Links</span>
+                        <span class="logo-subtitle" data-i18n="nav-subtitle">Beauty & Health Center</span>
+                    </div>
+                    <p class="text-gray-500 text-sm italic font-medium" data-i18n="hero-slogan">"Inner Health. True Beauty."</p>
+                </div>
+                <div class="flex flex-wrap gap-12">
+                    <div>
+                        <h4 class="font-bold mb-6 uppercase text-xs tracking-widest">Links</h4>
+                        <ul class="space-y-3 text-sm text-gray-600">
+                            <li><a onclick="navigateTo('home')" class="cursor-pointer hover:text-brand-gold">Home</a></li>
+                            <li><a onclick="navigateTo('about')" class="cursor-pointer hover:text-brand-gold">About Us</a></li>
+                            <li><a onclick="navigateTo('olylife')" class="cursor-pointer hover:text-brand-gold">Olylife Page</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 uppercase text-xs tracking-widest">Partners</h4>
+                        <ul class="space-y-3 text-sm text-gray-600">
+                            <li>Hyzen Global</li>
+                            <li>Olylife International</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-[10px] text-gray-400 uppercase tracking-widest">
+                <!-- UPDATED: Copyright year changed to 2026 -->
+                <p>&copy; 2026 Links Beauty & Health Center. <span data-i18n="footer-rights">Information portal. No direct sales.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- MULTI-LANGUAGE DATA ---
+        const translations = {
+            en: {
+                "nav-subtitle": "Beauty & Health Center",
+                "nav-home": "Home",
+                "nav-about": "About Us",
+                "nav-brands": "Our Brands",
+                "nav-contact": "Inquire Now",
+                "hero-slogan": "Inner Health. True Beauty.",
+                "hero-title-1": "Advanced",
+                "hero-title-2": "Wellness",
+                "hero-title-3": "Technology",
+                "hero-desc": "Exclusively featuring Hyzen Hydrogen systems and Olylife cellular therapy. Experience the science of longevity and the art of self-care.",
+                "btn-explore": "Explore Our Story",
+                "brands-title": "Authorized Partnerships",
+                "hyzen-name": "Hyzen Hydrogen Systems",
+                "hyzen-sample-desc": "Advanced molecular hydrogen generation for cellular hydration and recovery.",
+                "olylife-name": "Olylife Cellular Tech",
+                "olylife-sample-desc": "Utilizing pulsed electromagnetic fields and terahertz frequencies for total body balance.",
+                "olylife-page-title": "Cellular Energy Technology",
+                "olylife-desc": "Harnessing Tera-P90 and PEMF technology. Olylife devices are designed to revitalize cells, improve circulation, and restore your body's natural balance.",
+                "tera-name": "Tera P90+",
+                "tera-desc": "Enhanced resonance technology for deep-cell therapy and total body restoration. The Tera-P90+ represents the next generation of professional wellness intervention.",
+                "mission-label": "MISSION",
+                "mission-text": "TO EMPOWER INDIVIDUALS AND FAMILIES TO ACHIEVE LASTING WELLNESS AND BEAUTY THROUGH NATURAL, SAFE, AND EFFECTIVE SOLUTIONS THAT NURTURE BOTH INNER HEALTH AND OUTER RADIANCE.",
+                "vision-label": "VISION",
+                "vision-text": "TO BECOME A TRUSTED LEADER IN HOLISTIC BEAUTY AND WELLNESS, RECOGNIZED FOR TRANSFORMING LIVES BY COMBINING HEALTH, BEAUTY, AND PROACTIVE SELF-CARE FOR EVERY COMMUNITY WE SERVE.",
+                "values-label": "VALUES",
+                "v1-title": "Integrity",
+                "v1-desc": "Upholding trust and transparency in every service and product.",
+                "v2-title": "Excellence",
+                "v2-desc": "Commitment to the highest standards of quality and care.",
+                "v3-title": "Holistic Care",
+                "v3-desc": "Focusing on the whole person, not just appearances.",
+                "v4-title": "Sustainability",
+                "v4-desc": "Offering solutions that are safe, natural, and long-lasting.",
+                "info-title": "Consultation & Expertise",
+                "info-p": "Personalized consultation for advanced wellness devices.",
+                "stat-1": "100% Genuine",
+                "footer-rights": "Information portal. No direct sales.",
+                "contact-card-title": "How to Inquire"
+            },
+            vn: {
+                "nav-subtitle": "Trung Tâm Sức Khỏe & Làm Đẹp",
+                "nav-home": "Trang Chủ",
+                "nav-about": "Về Chúng Tôi",
+                "nav-brands": "Thương Hiệu",
+                "nav-contact": "Liên Hệ Ngay",
+                "hero-slogan": "Khỏe Bên Trong. Đẹp Bên Ngoài.",
+                "hero-title-1": "Công Nghệ",
+                "hero-title-2": "Sức Khỏe",
+                "hero-title-3": "Tiên Tiến",
+                "hero-desc": "Chuyên cung cấp hệ thống Hydrogen Hyzen và liệu pháp tế bào Olylife. Trải nghiệm khoa học về sự trường thọ và nghệ thuật tự chăm sóc bản thân.",
+                "btn-explore": "Tìm Hiểu Câu Chuyện",
+                "brands-title": "Đối Tác Ủy Quyền",
+                "hyzen-name": "Hệ Thống Hydrogen Hyzen",
+                "hyzen-sample-desc": "Tạo hydrogen phân tử tiên tiến để bù nước cho tế bào và phục hồi sức khỏe.",
+                "olylife-name": "Công Nghệ Tế Bào Olylife",
+                "olylife-sample-desc": "Sử dụng trường điện từ xung và tần số terahertz để cân bằng toàn bộ cơ thể.",
+                "olylife-page-title": "Công Nghệ Năng Lượng Tế Bào",
+                "olylife-desc": "Khai thác công nghệ Tera-P90 và PEMF. Các thiết bị Olylife được thiết kế để hồi sinh tế bào, cải thiện lưu thông máu và khôi phục sự cân bằng tự nhiên của cơ thể.",
+                "tera-name": "Tera P90+",
+                "tera-desc": "Công nghệ cộng hưởng nâng cao cho liệu pháp tế bào sâu và phục hồi cơ thể toàn diện. Tera-P90+ đại diện cho thế hệ can thiệp chăm sóc sức khỏe chuyên nghiệp tiếp theo.",
+                "mission-label": "SỨ MỆNH",
+                "mission-text": "TRAO QUYỀN CHO CÁ NHÂN VÀ GIA ĐÌNH ĐẠT ĐƯỢC SỨC KHỎE VÀ VẺ ĐẸP LÂU DÀI THÔNG QUÀ CÁC GIẢI PHÁP TỰ NHIÊN, AN TOÀN VÀ HIỆU QUẢ.",
+                "vision-label": "TẦM NHÌN",
+                "vision-text": "TRỞ THÀNH NGƯỜI DẪN ĐẦU TIN CẬY TRONG LĨNH VỰC LÀM ĐẸP VÀ SỨC KHỎE TOÀN DIỆN.",
+                "values-label": "GIÁ TRỊ",
+                "v1-title": "Chính Trực",
+                "v1-desc": "Giữ vững sự tin tưởng và minh bạch.",
+                "v2-title": "Hoàn Hảo",
+                "v2-desc": "Cam kết tiêu chuẩn chất lượng cao nhất.",
+                "v3-title": "Toàn Diện",
+                "v3-desc": "Tập trung vào con người một cách toàn diện.",
+                "v4-title": "Bền Vững",
+                "v4-desc": "Giải pháp an toàn và lâu dài.",
+                "info-title": "Tư Vấn & Chuyên Môn",
+                "info-p": "Tư vấn cá nhân hóa cho các thiết bị chăm sóc sức khỏe.",
+                "stat-1": "100% Chính Hãng",
+                "footer-rights": "Cổng thông tin. Không bán hàng trực tiếp.",
+                "contact-card-title": "Cách Thức Liên Hệ"
+            },
+            kr: {
+                "nav-subtitle": "뷰티 & 헬스 센터",
+                "nav-home": "홈",
+                "nav-about": "회사 소개",
+                "nav-brands": "브랜드",
+                "nav-contact": "문의하기",
+                "hero-slogan": "내면의 건강. 진정한 아름다움.",
+                "hero-title-1": "첨단",
+                "hero-title-2": "웰니스",
+                "hero-title-3": "기술",
+                "hero-desc": "Hyzen 수소 시스템과 Olylife 세포 요법을 독점적으로 제공합니다. 장수의 과학과 셀프 케어의 예술을 경험해 보세요.",
+                "btn-explore": "우리의 이야기",
+                "brands-title": "공식 파트너십",
+                "hyzen-name": "Hyzen 수소 시스템",
+                "hyzen-sample-desc": "세포 수분 공급 및 회복을 위한 고급 분자 수소 생성 시스템.",
+                "olylife-name": "Olylife 세포 기술",
+                "olylife-sample-desc": "신체 균형을 위한 펄스 전자기장 및 테라헤르츠 주파수 활용.",
+                "olylife-page-title": "세포 에너지 기술",
+                "olylife-desc": "Tera-P90 및 PEMF 기술 활용. Olylife 장치는 세포에 활력을 불어넣고 혈액 순환을 개선하며 신체의 자연스러운 균형을 회복하도록 설계되었습니다.",
+                "tera-name": "테라 P90+",
+                "tera-desc": "심부 세포 치료 및 신체 기능 회복을 위한 강화된 공명 기술. Tera-P90+는 차세대 전문 웰니스 솔루션을 대표합니다.",
+                "mission-label": "사명 (MISSION)",
+                "mission-text": "자연스럽고 안전하며 효과적인 솔루션을 통해 개인과 가족이 지속 가능한 웰니스와 아름바움을 달성할 수 있도록 돕습니다.",
+                "vision-label": "비전 (VISION)",
+                "vision-text": "홀리스틱 뷰티 및 웰니스 분야의 신뢰할 수 있는 리더가 되어 사람들의 삶을 변화시킵니다.",
+                "values-label": "가치 (VALUES)",
+                "v1-title": "정직",
+                "v1-desc": "신뢰와 투명성을 유지합니다.",
+                "v2-title": "탁월함",
+                "v2-desc": "최고 수준의 품질을 보장합니다.",
+                "v3-title": "홀리스틱 케어",
+                "v3-desc": "사람 전체에 집중합니다.",
+                "v4-title": "지속 가능성",
+                "v4-desc": "안전하고 오래 지속되는 솔루션.",
+                "info-title": "상담 및 전문 지식",
+                "info-p": "첨단 웰니스 장치 도입을 위한 맞춤형 상담.",
+                "stat-1": "100% 정품 보장",
+                "footer-rights": "정보 제공 포털. 직접 판매 없음.",
+                "contact-card-title": "문의 방법"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase() === lang) btn.classList.add('active');
+            });
+
+            gsap.to('body', { opacity: 0.5, duration: 0.2, onComplete: () => {
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang][key]) el.textContent = translations[lang][key];
+                });
+                gsap.to('body', { opacity: 1, duration: 0.3 });
+            }});
+        }
+
+        function scrollToBrand(brandId) {
+            navigateTo('olylife');
+        }
+
+        // --- PAGE NAVIGATION ---
+        function navigateTo(pageId) {
+            const currentActive = document.querySelector('.page-content.active');
+            const targetPage = document.getElementById('page-' + pageId);
+            
+            if (currentActive === targetPage) return;
+
+            gsap.to(currentActive, { opacity: 0, y: 20, duration: 0.4, onComplete: () => {
+                currentActive.classList.remove('active');
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0);
+                
+                gsap.fromTo(targetPage, 
+                    { opacity: 0, y: 20 },
+                    { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
+                );
+                
+                ScrollTrigger.refresh();
+            }});
+        }
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        window.onload = () => {
+            const tl = gsap.timeline();
+            tl.from("nav", { y: -100, opacity: 0, duration: 1, ease: "power3.out" })
+              .from("#hero-text > span", { opacity: 0, y: 20, duration: 0.5 })
+              .from("#hero-text h1", { opacity: 0, y: 30, duration: 0.8 }, "-=0.3")
+              .from("#hero-image", { opacity: 0, scale: 0.9, duration: 1.2, ease: "power4.out" }, "-=1");
+
+            gsap.utils.toArray(".reveal").forEach(elem => {
+                gsap.to(elem, {
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: "top 85%",
+                        toggleActions: "play none none none"
+                    },
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power2.out"
+                });
+            });
+        }
+    </script>
+</body>
+</html>
