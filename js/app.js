@@ -62,37 +62,36 @@
 
     function scrollToBrand(brandId) {
         if (isMobileMenuOpen) toggleMobileMenu();
-        if (brandId === 'hyzen') navigateTo('hyzen');
-        else if (brandId === 'olylife') navigateTo('olylife');
+        if (brandId === 'hyzen') window.location.href = 'hyzen-products/hyzen.html';
+        else if (brandId === 'olylife') window.location.href = 'olylife-products/olylife.html';
     }
 
     function navigateTo(pageId) {
         if (isMobileMenuOpen) toggleMobileMenu();
-        var currentActive = document.querySelector('.page-content.active');
-        var targetPage = document.getElementById('page-' + pageId);
-        if (!targetPage || currentActive === targetPage) return;
-        gsap.to(currentActive, {
-            opacity: 0,
-            y: 20,
-            duration: 0.4,
-            onComplete: function () {
-                currentActive.classList.remove('active');
-                targetPage.classList.add('active');
-                window.scrollTo(0, 0);
-                gsap.fromTo(targetPage, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' });
-                if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
-            }
-        });
+        var url;
+        if (pageId === 'home') url = 'index.html';
+        else if (pageId === 'hyzen') url = 'hyzen-products/hyzen.html';
+        else if (pageId === 'hz1100') url = 'hyzen-products/hz1100.html';
+        else if (pageId === 'olylife') url = 'olylife-products/olylife.html';
+        else if (pageId === 'a9purifier') url = 'olylife-products/a9purifier.html';
+        else url = pageId + '.html';
+        var hash = window.location.hash || '';
+        if (hash && pageId === 'home') url += hash;
+        window.location.href = url;
     }
 
     function initAnimations() {
         if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
         gsap.registerPlugin(ScrollTrigger);
-        var tl = gsap.timeline();
-        tl.from('nav', { y: -100, opacity: 0, duration: 1, ease: 'power3.out' })
-          .from('#hero-text > span', { opacity: 0, y: 20, duration: 0.5 })
-          .from('#hero-text h1', { opacity: 0, y: 30, duration: 0.8 }, '-=0.3')
-          .from('#hero-image', { opacity: 0, scale: 0.9, duration: 1.2, ease: 'power4.out' }, '-=1');
+        gsap.from('nav', { y: -100, opacity: 0, duration: 1, ease: 'power3.out' });
+        var heroText = document.getElementById('hero-text');
+        if (heroText) {
+            var tl = gsap.timeline({ delay: 0.2 });
+            tl.from('#hero-text > span', { opacity: 0, y: 20, duration: 0.5 })
+              .from('#hero-text h1', { opacity: 0, y: 30, duration: 0.8 }, '-=0.3');
+            var heroImage = document.getElementById('hero-image');
+            if (heroImage) tl.from('#hero-image', { opacity: 0, scale: 0.9, duration: 1.2, ease: 'power4.out' }, '-=1');
+        }
         var revealEls = document.querySelectorAll('.reveal');
         [].forEach.call(revealEls, function (elem) {
             gsap.to(elem, {
