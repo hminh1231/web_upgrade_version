@@ -10,16 +10,29 @@ export default function HomePage() {
   useRevealAnimations();
 
   useEffect(() => {
-    const tl = gsap.timeline({ delay: 0.2 });
-    const heroText = document.getElementById('hero-text');
-    if (heroText) {
-      tl.from('#hero-text > span', { opacity: 0, y: 20, duration: 0.5 })
-        .from('#hero-text h1', { opacity: 0, y: 30, duration: 0.8 }, '-=0.3');
-      const heroImage = document.getElementById('hero-image');
-      if (heroImage) {
-        tl.from('#hero-image', { opacity: 0, scale: 0.9, duration: 1.2, ease: 'power4.out' }, '-=1');
+    const ctx = gsap.context(() => {
+      const heroText = document.getElementById('hero-text');
+      if (heroText) {
+        const tl = gsap.timeline({ delay: 0.2 });
+        tl.fromTo('#hero-text > span',
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.5 }
+        ).fromTo('#hero-text h1',
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8 },
+          '-=0.3'
+        );
+        const heroImage = document.getElementById('hero-image');
+        if (heroImage) {
+          tl.fromTo('#hero-image',
+            { opacity: 0, scale: 0.9 },
+            { opacity: 1, scale: 1, duration: 1.2, ease: 'power4.out' },
+            '-=1'
+          );
+        }
       }
-    }
+    });
+    return () => ctx.revert();
   }, []);
 
   return (

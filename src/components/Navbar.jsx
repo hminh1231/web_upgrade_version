@@ -11,9 +11,13 @@ export default function Navbar() {
 
   // Nav entrance animation (matches original app.js)
   useEffect(() => {
-    if (navRef.current) {
-      gsap.from(navRef.current, { y: -100, opacity: 0, duration: 1, ease: 'power3.out' });
-    }
+    const ctx = gsap.context(() => {
+      gsap.fromTo(navRef.current,
+        { y: -100, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, ease: 'power3.out', clearProps: 'transform,opacity' }
+      );
+    });
+    return () => ctx.revert();
   }, []);
 
   const toggleMobileMenu = () => {

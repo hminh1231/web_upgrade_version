@@ -10,12 +10,12 @@ export default function useRevealAnimations() {
     const timer = setTimeout(() => {
       const revealEls = document.querySelectorAll('.reveal');
 
-      // Reset reveal elements to initial state so they animate fresh
+      // Reset reveal elements to initial state so they animate fresh on each page
       revealEls.forEach((elem) => {
         gsap.set(elem, { opacity: 0, y: 30 });
       });
 
-      // Create scroll-triggered animations
+      // Create scroll-triggered reveal animations
       revealEls.forEach((elem) => {
         gsap.to(elem, {
           scrollTrigger: {
@@ -35,9 +35,11 @@ export default function useRevealAnimations() {
 
     return () => {
       clearTimeout(timer);
-      // Only kill scroll triggers we created, not all triggers globally
-      ScrollTrigger.getAll().forEach((trigger) => {
-        trigger.kill();
+      // Kill only ScrollTrigger instances (not regular tweens like nav animation)
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+      // Clear any remaining inline styles on reveal elements
+      document.querySelectorAll('.reveal').forEach((elem) => {
+        gsap.killTweensOf(elem);
       });
     };
   }, []);
