@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useCallback } from 'react';
+import gsap from 'gsap';
 import translations from '../data/translations';
 
 const LanguageContext = createContext();
@@ -7,7 +8,15 @@ export function LanguageProvider({ children }) {
   const [language, setLanguageState] = useState('en');
 
   const setLanguage = useCallback((lang) => {
-    setLanguageState(lang);
+    // Fade body out and back in, matching original app.js behavior
+    gsap.to('body', {
+      opacity: 0.5,
+      duration: 0.2,
+      onComplete: () => {
+        setLanguageState(lang);
+        gsap.to('body', { opacity: 1, duration: 0.3 });
+      }
+    });
   }, []);
 
   const t = useCallback((key) => {

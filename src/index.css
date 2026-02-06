@@ -2,163 +2,178 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Links Beauty & Health Center - Main Styles */
+/* =============================================
+   Links Beauty & Health Center - Custom Styles
+   Placed AFTER Tailwind directives to match
+   the original site's CSS cascade behavior.
+   ============================================= */
+
 :root {
-  --brand-navy: #1a2a3a;
-  --brand-gold: #c5a059;
-  --brand-cream: #fdfbf7;
+    --brand-navy: #1a2a3a;
+    --brand-gold: #c5a059;
+    --brand-cream: #fdfbf7;
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: var(--brand-cream);
-  color: var(--brand-navy);
-  overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--brand-cream);
+    color: var(--brand-navy);
+    overflow-x: hidden;
 }
 
 h1, h2, h3, .serif {
-  font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', serif;
 }
 
 /* Logo */
 .logo-links {
-  color: var(--brand-navy);
-  font-size: 1.8rem;
-  line-height: 1;
-  cursor: pointer;
+    color: var(--brand-navy);
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
 }
 @media (min-width: 768px) {
-  .logo-links { font-size: 2.5rem; }
+    .logo-links { font-size: 2.5rem; }
 }
 
 .logo-subtitle {
-  color: var(--brand-gold);
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  font-weight: 600;
+    color: var(--brand-gold);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 @media (min-width: 768px) {
-  .logo-subtitle {
-    font-size: 0.75rem;
-    letter-spacing: 0.25em;
-  }
+    .logo-subtitle {
+        font-size: 0.75rem;
+        letter-spacing: 0.25em;
+    }
 }
 
 /* Buttons */
 .btn-outline-gold {
-  border: 1px solid var(--brand-gold);
-  color: var(--brand-gold);
-  transition: all 0.3s ease;
+    border: 1px solid var(--brand-gold);
+    color: var(--brand-gold);
+    transition: all 0.3s ease;
 }
 .btn-outline-gold:hover {
-  background-color: var(--brand-gold);
-  color: white;
+    background-color: var(--brand-gold);
+    color: white;
 }
 
 /* Nav */
 .nav-link {
-  position: relative;
-  padding-bottom: 2px;
-  cursor: pointer;
+    position: relative;
+    padding-bottom: 2px;
+    cursor: pointer;
 }
 .nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--brand-gold);
-  transition: width 0.3s ease;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--brand-gold);
+    transition: width 0.3s ease;
 }
 .nav-link:hover::after { width: 100%; }
 
+/* Page content (SPA) */
+.page-content {
+    display: none;
+    opacity: 0;
+}
+.page-content.active {
+    display: block;
+    opacity: 1;
+}
+
 /* Reveal animation trigger */
 .reveal {
-  opacity: 0;
-  transform: translateY(30px);
+    opacity: 0;
+    transform: translateY(30px);
 }
 
 /* Language switcher */
 .lang-btn {
-  cursor: pointer;
-  transition: color 0.3s ease;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
 }
 .lang-btn.active {
-  color: var(--brand-gold);
-  text-decoration: underline;
-  text-underline-offset: 4px;
+    color: var(--brand-gold);
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 /* Dropdown */
 .dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: white;
-  min-width: 180px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  border-radius: 12px;
-  padding: 8px 0;
-  z-index: 100;
-  border: 1px solid #f0f0f0;
-  margin-top: 10px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 180px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    padding: 8px 0;
+    z-index: 100;
+    border: 1px solid #f0f0f0;
+    margin-top: 10px;
 }
 .dropdown-menu::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: 0;
-  width: 100%;
-  height: 20px;
-  background: transparent;
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: transparent;
 }
 .group:hover .dropdown-menu {
-  display: block;
-  animation: fadeIn 0.3s ease;
+    display: block;
+    animation: fadeIn 0.3s ease;
 }
 
 /* Mobile menu */
 #mobile-menu {
-  display: none;
-  height: 0;
-  opacity: 0;
-  overflow: hidden;
+    display: none;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Toast */
 #status-toast {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(100px);
-  background: var(--brand-navy);
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 99px;
-  z-index: 1000;
-  font-weight: 600;
-  font-size: 0.875rem;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  opacity: 0;
-  pointer-events: none;
-  white-space: nowrap;
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--brand-navy);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 99px;
+    z-index: 1000;
+    font-weight: 600;
+    font-size: 0.875rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--brand-cream); }
 ::-webkit-scrollbar-thumb {
-  background: var(--brand-gold);
-  border-radius: 10px;
+    background: var(--brand-gold);
+    border-radius: 10px;
 }

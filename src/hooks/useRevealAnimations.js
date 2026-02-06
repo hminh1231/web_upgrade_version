@@ -4,15 +4,20 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function useRevealAnimations(deps = []) {
+export default function useRevealAnimations() {
   useEffect(() => {
-    // Small delay to let DOM render
+    // Small delay to let the DOM render after route change
     const timer = setTimeout(() => {
       const revealEls = document.querySelectorAll('.reveal');
-      const triggers = [];
 
+      // Reset reveal elements to initial state so they animate fresh
       revealEls.forEach((elem) => {
-        const anim = gsap.to(elem, {
+        gsap.set(elem, { opacity: 0, y: 30 });
+      });
+
+      // Create scroll-triggered animations
+      revealEls.forEach((elem) => {
+        gsap.to(elem, {
           scrollTrigger: {
             trigger: elem,
             start: 'top 85%',
@@ -23,22 +28,17 @@ export default function useRevealAnimations(deps = []) {
           duration: 1,
           ease: 'power2.out',
         });
-        triggers.push(anim);
       });
 
       ScrollTrigger.refresh();
-
-      return () => {
-        triggers.forEach((anim) => {
-          if (anim.scrollTrigger) anim.scrollTrigger.kill();
-          anim.kill();
-        });
-      };
     }, 100);
 
     return () => {
       clearTimeout(timer);
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      // Only kill scroll triggers we created, not all triggers globally
+      ScrollTrigger.getAll().forEach((trigger) => {
+        trigger.kill();
+      });
     };
-  }, deps);
+  }, []);
 }

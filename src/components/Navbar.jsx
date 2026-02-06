@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { useLanguage } from '../context/LanguageContext';
@@ -7,6 +7,14 @@ export default function Navbar() {
   const { language, setLanguage, t } = useLanguage();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef(null);
+  const navRef = useRef(null);
+
+  // Nav entrance animation (matches original app.js)
+  useEffect(() => {
+    if (navRef.current) {
+      gsap.from(navRef.current, { y: -100, opacity: 0, duration: 1, ease: 'power3.out' });
+    }
+  }, []);
 
   const toggleMobileMenu = () => {
     const menu = mobileMenuRef.current;
@@ -42,11 +50,8 @@ export default function Navbar() {
     }
   };
 
-  const languages = ['en', 'vn', 'kr'];
-  const langLabels = { en: 'EN', vn: 'VN', kr: 'KR' };
-
   return (
-    <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300" id="navbar">
+    <nav ref={navRef} className="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300" id="navbar">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center relative">
         <div className="flex flex-col z-50 relative">
           <Link to="/" className="logo-links serif font-bold">Links</Link>
@@ -54,27 +59,21 @@ export default function Navbar() {
         </div>
         <div className="hidden md:flex space-x-8 items-center">
           <div className="flex space-x-3 mr-8 border-r border-gray-200 pr-8">
-            {languages.map((lang, i) => (
-              <span key={lang}>
-                {i > 0 && <span className="text-gray-300 mr-3">|</span>}
-                <span
-                  className={`lang-btn ${language === lang ? 'active' : ''}`}
-                  onClick={() => setLanguage(lang)}
-                >
-                  {langLabels[lang]}
-                </span>
-              </span>
-            ))}
+            <span className={`lang-btn ${language === 'en' ? 'active' : ''}`} onClick={() => setLanguage('en')}>EN</span>
+            <span className="text-gray-300">|</span>
+            <span className={`lang-btn ${language === 'vn' ? 'active' : ''}`} onClick={() => setLanguage('vn')}>VN</span>
+            <span className="text-gray-300">|</span>
+            <span className={`lang-btn ${language === 'kr' ? 'active' : ''}`} onClick={() => setLanguage('kr')}>KR</span>
           </div>
           <Link to="/" className="nav-link text-sm font-medium tracking-wide">{t('nav-home')}</Link>
           <Link to="/about" className="nav-link text-sm font-medium tracking-wide">{t('nav-about')}</Link>
           <div className="group relative">
-            <span className="nav-link text-sm font-medium tracking-wide flex items-center">
+            <a className="nav-link text-sm font-medium tracking-wide flex items-center">
               {t('nav-brands')}
               <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
               </svg>
-            </span>
+            </a>
             <div className="dropdown-menu">
               <Link to="/hyzen" className="block px-6 py-3 text-sm text-gray-700 hover:bg-brand-cream hover:text-brand-gold">Hyzen</Link>
               <Link to="/olylife" className="block px-6 py-3 text-sm text-gray-700 hover:bg-brand-cream hover:text-brand-gold">Olylife</Link>
@@ -83,7 +82,7 @@ export default function Navbar() {
           <Link to="/#contact" className="btn-outline-gold px-6 py-2 rounded-full text-sm font-bold shadow-sm">{t('nav-contact')}</Link>
         </div>
         <button onClick={toggleMobileMenu} className="md:hidden text-brand-navy z-50 focus:outline-none p-2 -mr-2">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="menu-icon">
             {isMobileMenuOpen ? (
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
             ) : (
@@ -108,15 +107,9 @@ export default function Navbar() {
           </div>
           <Link to="/#contact" onClick={closeMobileMenu} className="text-xl font-bold text-brand-gold">{t('nav-contact')}</Link>
           <div className="flex justify-center space-x-6 pt-8">
-            {languages.map((lang) => (
-              <span
-                key={lang}
-                className={`lang-btn text-lg ${language === lang ? 'active' : ''}`}
-                onClick={() => setLanguage(lang)}
-              >
-                {langLabels[lang]}
-              </span>
-            ))}
+            <span className={`lang-btn text-lg ${language === 'en' ? 'active' : ''}`} onClick={() => setLanguage('en')}>EN</span>
+            <span className={`lang-btn text-lg ${language === 'vn' ? 'active' : ''}`} onClick={() => setLanguage('vn')}>VN</span>
+            <span className={`lang-btn text-lg ${language === 'kr' ? 'active' : ''}`} onClick={() => setLanguage('kr')}>KR</span>
           </div>
         </div>
       </div>

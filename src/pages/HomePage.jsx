@@ -51,9 +51,9 @@ export default function HomePage() {
                   </svg>
                 </Link>
               </div>
-              <Link to="/hyzen" className="md:hidden border border-brand-navy text-brand-navy px-8 py-4 rounded-full font-bold hover:bg-brand-navy hover:text-white transition-all text-center">
+              <a href="#brands" className="md:hidden border border-brand-navy text-brand-navy px-8 py-4 rounded-full font-bold hover:bg-brand-navy hover:text-white transition-all text-center">
                 {t('nav-brands')}
-              </Link>
+              </a>
             </div>
           </div>
           <div className="relative mt-8 md:mt-0" id="hero-image">

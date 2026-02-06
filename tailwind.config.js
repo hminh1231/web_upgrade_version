@@ -11,10 +11,6 @@ export default {
         'brand-gold': '#c5a059',
         'brand-cream': '#fdfbf7',
       },
-      fontFamily: {
-        serif: ['Playfair Display', 'serif'],
-        sans: ['Montserrat', 'sans-serif'],
-      },
     },
   },
   plugins: [],

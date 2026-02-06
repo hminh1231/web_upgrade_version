@@ -13,7 +13,7 @@ export default function Footer() {
               <span className="logo-links serif font-bold">Links</span>
               <span className="logo-subtitle">{t('nav-subtitle')}</span>
             </Link>
-            <p className="text-gray-500 text-sm italic font-medium">&ldquo;{t('hero-slogan')}&rdquo;</p>
+            <p className="text-gray-500 text-sm italic font-medium">"{t('hero-slogan')}"</p>
           </div>
           <div className="flex flex-wrap gap-12">
             <div>
