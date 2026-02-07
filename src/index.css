@@ -1,4 +1,13 @@
-/* Links Beauty & Health Center - Main Styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================
+   Links Beauty & Health Center - Custom Styles
+   Placed AFTER Tailwind directives to match
+   the original site's CSS cascade behavior.
+   ============================================= */
+
 :root {
     --brand-navy: #1a2a3a;
     --brand-gold: #c5a059;
