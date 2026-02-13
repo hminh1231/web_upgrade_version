@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Olylife | Links Beauty & Health Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { 'brand-navy': '#1a2a3a', 'brand-gold': '#c5a059', 'brand-cream': '#fdfbf7' } } } };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css?v=1">
+</head>
+<body>
+    <div id="status-toast">Coming Soon</div>
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center relative">
+            <div class="flex items-center gap-3 z-50 relative">
+                <a href="../index.html" class="flex items-center gap-3">
+                    <img src="../assets/logo.png" alt="Links Beauty & Health Center" class="h-14 w-14 object-contain flex-shrink-0">
+                    <span class="flex flex-col">
+                        <span class="logo-links serif font-bold" data-i18n="nav-logo-links">Links</span>
+                        <span class="logo-subtitle" data-i18n="nav-subtitle">Beauty & Health Center</span>
+                    </span>
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-8 items-center">
+                <div class="flex space-x-3 mr-8 border-r border-gray-200 pr-8">
+                    <span class="lang-btn active" onclick="setLanguage('en')">EN</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="lang-btn" onclick="setLanguage('vn')">VN</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="lang-btn" onclick="setLanguage('kr')">KR</span>
+                </div>
+                <a href="../index.html" class="nav-link text-sm font-medium tracking-wide" data-i18n="nav-home">Home</a>
+                <a href="../about.html" class="nav-link text-sm font-medium tracking-wide" data-i18n="nav-about">About Us</a>
+                <div class="group relative">
+                    <a class="nav-link text-sm font-medium tracking-wide flex items-center" data-i18n="nav-brands">
+                        Our Brands
+                        <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="../hyzen-products/hyzen.html" class="block px-6 py-3 text-sm text-gray-700 hover:bg-brand-cream hover:text-brand-gold">Hyzen</a>
+                        <a href="olylife.html" class="block px-6 py-3 text-sm text-gray-700 hover:bg-brand-cream hover:text-brand-gold">Olylife</a>
+                    </div>
+                </div>
+                <a href="../index.html#contact" class="btn-outline-gold px-6 py-2 rounded-full text-sm font-bold shadow-sm" data-i18n="nav-contact">Inquire Now</a>
+            </div>
+            <button onclick="toggleMobileMenu()" class="md:hidden text-brand-navy z-50 focus:outline-none p-2 -mr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="menu-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="absolute top-0 left-0 w-full bg-white h-screen flex flex-col pt-24 px-6 md:hidden shadow-xl" style="display: none;">
+            <div class="flex flex-col space-y-6 text-center">
+                <a href="../index.html" class="text-xl font-medium text-brand-navy hover:text-brand-gold" data-i18n="nav-home">Home</a>
+                <a href="../about.html" class="text-xl font-medium text-brand-navy hover:text-brand-gold" data-i18n="nav-about">About Us</a>
+                <div class="border-t border-b border-gray-100 py-4 flex flex-col space-y-4">
+                    <span class="text-sm uppercase tracking-widest text-gray-400" data-i18n="nav-brands">Our Brands</span>
+                    <a href="../hyzen-products/hyzen.html" class="text-lg text-brand-navy hover:text-brand-gold">Hyzen</a>
+                    <a href="olylife.html" class="text-lg text-brand-navy hover:text-brand-gold">Olylife</a>
+                </div>
+                <a href="../index.html#contact" class="text-xl font-bold text-brand-gold" data-i18n="nav-contact">Inquire Now</a>
+                <div class="flex justify-center space-x-6 pt-8">
+                    <span class="lang-btn active text-lg" onclick="setLanguage('en')">EN</span>
+                    <span class="lang-btn text-lg" onclick="setLanguage('vn')">VN</span>
+                    <span class="lang-btn text-lg" onclick="setLanguage('kr')">KR</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="py-32 pt-32">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <h4 class="text-brand-gold font-bold tracking-widest text-xs uppercase mb-2" data-i18n="olylife-page-subtitle">Olylife International</h4>
+                <h2 class="text-3xl md:text-5xl mb-6 font-bold" data-i18n="olylife-page-title">Cellular Energy Technology</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-8" data-i18n="olylife-desc">Harnessing Tera-P90 and PEMF technology. Olylife devices are designed to revitalize cells, improve circulation, and restore your body's natural balance.</p>
+                <div class="w-24 h-1 bg-brand-gold mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+                <div class="reveal" data-delay="0">
+                    <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 h-full">
+                        <div class="bg-brand-cream rounded-2xl overflow-hidden mb-8 h-64 md:h-80 flex items-center justify-center relative p-4">
+                            <img src="https://image2url.com/r2/default/images/1770350200058-4a847531-723b-47cb-8896-6797576b1207.png" class="w-full h-full object-contain" alt="Tera-P90+">
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4" data-i18n="tera-name">Tera-P90+</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6" data-i18n="tera-card-desc">Advanced terahertz and PEMF technology to revitalize cells, improve circulation, and restore your body's natural balance. Safe, non-invasive cellular energy support.</p>
+                        <ul class="space-y-3 text-sm text-gray-500 mb-8">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>PEMF</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Terahertz</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Non-Invasive</li>
+                        </ul>
+                        <a href="tera-p90.html" class="block w-full mt-4 bg-brand-gold text-white py-3 rounded-xl font-bold hover:bg-white hover:text-brand-navy transition-all text-center" data-i18n="btn-view-details">View Details</a>
+                    </div>
+                </div>
+                <div class="reveal" data-delay="0.15">
+                    <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 h-full">
+                        <div class="bg-brand-cream rounded-2xl overflow-hidden mb-8 h-64 md:h-80 flex items-center justify-center relative p-4">
+                            <img src="https://image2url.com/r2/default/images/1770326292871-362bb113-0cf7-47e8-966e-ea7171a5ebe2.png" class="w-full h-full object-contain" alt="A9 Air Purifier">
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4" data-i18n="home-a9-name">A9 Smart Anion Air Purifier</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6" data-i18n="home-a9-desc">Bring the forest to your home. Advanced anion generation for respiratory health and longevity.</p>
+                        <ul class="space-y-3 text-sm text-gray-500 mb-8">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Anion Generation</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Respiratory Health</li>
+                        </ul>
+                        <a href="a9purifier.html" class="block w-full mt-4 bg-brand-gold text-white py-3 rounded-xl font-bold hover:bg-white hover:text-brand-navy transition-all text-center" data-i18n="btn-view-details">View Details</a>
+                    </div>
+                </div>
+                <div class="reveal" data-delay="0.3">
+                    <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 h-full">
+                        <div class="bg-brand-cream rounded-2xl overflow-hidden mb-8 h-64 md:h-80 flex items-center justify-center relative p-4">
+                            <img src="../assets/olylife-h-plus-bar.png" class="w-full h-full object-contain" alt="Olylife H+ Bar – hydrogen bar and bottle">
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4" data-i18n="hbar-name">Olylife H+ Bar</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6" data-i18n="hbar-desc">Olylife H+ Bar—hydrogen-rich wellness in a sleek bar and bottle. Model HLY-S001. Designed for easy use and portability.</p>
+                        <ul class="space-y-3 text-sm text-gray-500 mb-8">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Hydrogen</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Portable</li>
+                        </ul>
+                        <a href="h-plus-bar.html" class="block w-full mt-4 bg-brand-gold text-white py-3 rounded-xl font-bold hover:bg-white hover:text-brand-navy transition-all text-center" data-i18n="btn-view-details">View Details</a>
+                    </div>
+                </div>
+                <div class="reveal" data-delay="0.45">
+                    <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 h-full">
+                        <div class="bg-brand-cream rounded-2xl overflow-hidden mb-8 h-64 md:h-80 flex items-center justify-center relative p-4">
+                            <img src="../assets/olylife-vitality-wand.png" class="w-full h-full object-contain" alt="Olylife Vitality Wand – premium wand device with carrying case and accessories">
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4" data-i18n="vitality-name">Olylife Vitality Wand</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6" data-i18n="vitality-desc">Olylife Vitality Wand—a sleek, premium handheld device with carrying case and attachments. Designed for targeted wellness and convenience at home or on the go.</p>
+                        <ul class="space-y-3 text-sm text-gray-500 mb-8">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Portable</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Premium</li>
+                        </ul>
+                        <a href="vitality-wand.html" class="block w-full mt-4 bg-brand-gold text-white py-3 rounded-xl font-bold hover:bg-white hover:text-brand-navy transition-all text-center" data-i18n="btn-view-details">View Details</a>
+                    </div>
+                </div>
+                <div class="reveal" data-delay="0.6">
+                    <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 h-full">
+                        <div class="bg-brand-cream rounded-2xl overflow-hidden mb-8 h-64 md:h-80 flex items-center justify-center relative p-4">
+                            <img src="../assets/olylife-galaxy-g-one.png" class="w-full h-full object-contain" alt="Olylife Galaxy G-One – eye massage device">
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4" data-i18n="galaxy-name">Olylife Galaxy G-One</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6" data-i18n="galaxy-desc">Olylife Galaxy G-One—a sleek eye massage device with ergonomic design and adjustable head strap. White and green styling for comfortable, targeted eye care at home or on the go.</p>
+                        <ul class="space-y-3 text-sm text-gray-500 mb-8">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Eye Care</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Portable</li>
+                        </ul>
+                        <a href="galaxy-g-one.html" class="block w-full mt-4 bg-brand-gold text-white py-3 rounded-xl font-bold hover:bg-white hover:text-brand-navy transition-all text-center" data-i18n="btn-view-details">View Details</a>
+                    </div>
+                </div>
+                <div class="reveal" data-delay="0.75">
+                    <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 h-full">
+                        <div class="bg-brand-cream rounded-2xl overflow-hidden mb-8 h-64 md:h-80 flex items-center justify-center relative p-4">
+                            <img src="../assets/olylife-shaken-massager.png" class="w-full h-full object-contain" alt="OlyLife Shaken Massager – PEMF smart fat-burning belt">
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4" data-i18n="shaken-name">OlyLife Shaken Massager</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6" data-i18n="shaken-desc">OlyLife Shaken Massager—a 7-in-1 body-shaping belt combining PEMF, ultrasound cavitation, red light therapy, RF, vibration, heat, and rhythmic massage. Wearable design for fat burning and core wellness.</p>
+                        <ul class="space-y-3 text-sm text-gray-500 mb-8">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>PEMF</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>7-in-1</li>
+                        </ul>
+                        <a href="shaken-massager.html" class="block w-full mt-4 bg-brand-gold text-white py-3 rounded-xl font-bold hover:bg-white hover:text-brand-navy transition-all text-center" data-i18n="btn-view-details">View Details</a>
+                    </div>
+                </div>
+                <div class="reveal" data-delay="0.9">
+                    <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 h-full">
+                        <div class="bg-brand-cream rounded-2xl overflow-hidden mb-8 h-64 md:h-80 flex items-center justify-center relative p-4">
+                            <img src="../assets/olylife-hydrogen-generator.png" class="w-full h-full object-contain" alt="Olylife Hydrogen Generator – H₂ and O₂ generation, digital display">
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4" data-i18n="h2gen-name">Olylife Hydrogen Generator</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6" data-i18n="h2gen-desc">Olylife Hydrogen Generator—a compact, sleek device with digital display for H₂ and O₂ generation. High purity, adjustable flow and working time. Designed for home or office use.</p>
+                        <ul class="space-y-3 text-sm text-gray-500 mb-8">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Hydrogen</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Oxygen</li>
+                        </ul>
+                        <a href="hydrogen-generator.html" class="block w-full mt-4 bg-brand-gold text-white py-3 rounded-xl font-bold hover:bg-white hover:text-brand-navy transition-all text-center" data-i18n="btn-view-details">View Details</a>
+                    </div>
+                </div>
+                <div class="reveal" data-delay="1.05">
+                    <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 h-full">
+                        <div class="bg-brand-cream rounded-2xl overflow-hidden mb-8 h-64 md:h-80 flex items-center justify-center relative p-4">
+                            <img src="../assets/skyline-sl6.png" class="w-full h-full object-contain" alt="SkyLine SL-6 – SKY LINE branded products">
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4">SkyLine SL-6</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">The OlyLife SkyLine SL-6 is far more than a sanitary napkin—it's an integrated wellness system designed to adapt to a woman's body with precision and sensitivity. Graphene, bamboo fiber, and a smart composite chip elevate personal care into an experience of comfort, confidence, and natural balance.</p>
+                        <ul class="space-y-3 text-sm text-gray-500 mb-8">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Graphene</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Bamboo</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-brand-gold rounded-full mr-3"></span>Wellness</li>
+                        </ul>
+                        <a href="skyline-sl6.html" class="block w-full mt-4 bg-brand-gold text-white py-3 rounded-xl font-bold hover:bg-white hover:text-brand-navy transition-all text-center" data-i18n="btn-view-details">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-20 text-center reveal">
+                <a href="../index.html" class="btn-outline-gold px-10 py-4 rounded-full font-bold uppercase tracking-widest text-xs inline-block" data-i18n="btn-return-portal">Return to Portal</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white pt-20 pb-10 border-t border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start mb-16 gap-12">
+                <div>
+                    <a href="../index.html" class="flex items-center gap-3 mb-6">
+                        <img src="../assets/logo.png" alt="Links Beauty & Health Center" class="h-14 w-14 object-contain flex-shrink-0">
+                        <span class="flex flex-col">
+                            <span class="logo-links serif font-bold" data-i18n="nav-logo-links">Links</span>
+                            <span class="logo-subtitle" data-i18n="nav-subtitle">Beauty & Health Center</span>
+                        </span>
+                    </a>
+                    <p class="text-gray-500 text-sm italic font-medium" data-i18n="hero-slogan">"Inner Health. True Beauty."</p>
+                </div>
+                <div class="flex flex-wrap gap-12">
+                    <div>
+                        <h4 class="font-bold mb-6 uppercase text-xs tracking-widest" data-i18n="nav-logo-links">Links</h4>
+                        <ul class="space-y-3 text-sm text-gray-600">
+                            <li><a href="../index.html" class="hover:text-brand-gold" data-i18n="nav-home">Home</a></li>
+                            <li><a href="../about.html" class="hover:text-brand-gold" data-i18n="nav-about">About Us</a></li>
+                            <li><a href="olylife.html" class="hover:text-brand-gold" data-i18n="footer-olylife-page">Olylife Page</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 uppercase text-xs tracking-widest" data-i18n="footer-partners">Partners</h4>
+                        <ul class="space-y-3 text-sm text-gray-600">
+                            <li data-i18n="footer-hyzen-global">Hyzen Global</li>
+                            <li data-i18n="footer-olylife-international">Olylife International</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-[10px] text-gray-400 uppercase tracking-widest">
+                <p>&copy; 2026 <span data-i18n="nav-logo-links">Links</span> <span data-i18n="nav-subtitle">Beauty & Health Center</span>. <span data-i18n="footer-rights">Information portal. No direct sales.</span></p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/translations.js?v=1"></script>
+    <script src="../js/app.js?v=1"></script>
+</body>
+</html>

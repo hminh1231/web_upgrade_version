@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Replace https://yourdomain.com with your actual site URL before search engine submission -->
+  <url><loc>https://yourdomain.com/</loc><lastmod>2026-02-08</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://yourdomain.com/index.html</loc><lastmod>2026-02-08</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://yourdomain.com/about.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://yourdomain.com/services.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://yourdomain.com/contact.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://yourdomain.com/sitemap.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://yourdomain.com/hyzen-products/hyzen.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://yourdomain.com/hyzen-products/backgeum-cheon-soo.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourdomain.com/hyzen-products/backgeum-plapin-cheon-soo.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourdomain.com/hyzen-products/hydrogen-mist.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourdomain.com/hyzen-products/hydrogen-tumbler.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourdomain.com/hyzen-products/newpower-probiotics.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourdomain.com/hyzen-products/platino-graphene-patch.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourdomain.com/hyzen-products/hz1100.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourdomain.com/olylife-products/olylife.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://yourdomain.com/olylife-products/skyline-sl6.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourdomain.com/olylife-products/vitality-wand.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourdomain.com/olylife-products/hydrogen-generator.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourdomain.com/olylife-products/h-plus-bar.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourdomain.com/olylife-products/galaxy-g-one.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourdomain.com/olylife-products/tera-p90.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourdomain.com/olylife-products/a9purifier.html</loc><lastmod>2026-02-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+</urlset>
