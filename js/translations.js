@@ -9,7 +9,7 @@ window.translations = {
         "nav-about": "About Us",
         "nav-brands": "Our Brands",
         "nav-contact": "Inquire Now",
-        "hero-slogan": "Inner Health. True Beauty.",
+        "hero-slogan": "Inner Health Shapes True Beauty",
         "hero-title-1": "Advanced",
         "hero-title-2": "Wellness",
         "hero-title-3": "Technology",
@@ -28,7 +28,7 @@ window.translations = {
         "olylife-desc": "Harnessing Tera-P90 and PEMF technology. Olylife devices are designed to revitalize cells, improve circulation, and restore your body's natural balance.",
         "tera-name": "Tera P90+",
         "tera-desc": "Enhanced resonance technology for deep-cell therapy and total body restoration.",
-        "about-intro": "At Links Beauty & Health Center, we believe that Inner Health. True Beauty. We are where proactive wellness meets holistic beauty—offering safe, natural, and sustainable solutions for you and your family.",
+        "about-intro": "At Links Beauty & Health Center, we believe that Inner Health Shapes True Beauty. We are where proactive wellness meets holistic beauty—offering safe, natural, and sustainable solutions for you and your family.",
         "about-philosophy": "With a dedicated team and a root-cause approach to care, we don't just help you look better on the outside—we help you become healthier on the inside, so your beauty can last over time.",
         "mission-label": "MISSION",
         "mission-text": "TO EMPOWER INDIVIDUALS AND FAMILIES TO ACHIEVE LASTING WELLNESS AND BEAUTY THROUGH NATURAL, SAFE, AND EFFECTIVE SOLUTIONS THAT NURTURE BOTH INNER HEALTH AND OUTER RADIANCE.",
@@ -592,7 +592,7 @@ window.translations = {
         "why-brands-desc": "We partner exclusively with Hyzen and Olylife—leaders in hydrogen and cellular wellness.",
         "why-holistic-title": "Holistic Care",
         "why-holistic-desc": "We focus on inner health and lasting beauty—safe, natural, and sustainable solutions.",
-        "quote-tagline": "Inner Health. True Beauty.",
+        "quote-tagline": "\"Inner Health Shapes True Beauty\"",
         "quote-desc": "At Links Beauty & Health Center, we believe lasting wellness starts from within. Our authorized Hyzen and Olylife products support your journey with science-backed technology and personalized care."
     },
     vn: {
@@ -602,7 +602,7 @@ window.translations = {
         "nav-about": "Về Chúng Tôi",
         "nav-brands": "Thương Hiệu",
         "nav-contact": "Liên Hệ Ngay",
-        "hero-slogan": "Sức khỏe nội tại. Vẻ đẹp đích thực.",
+        "hero-slogan": "Sức Khỏe Bên Trong Kiến Tạo Vẻ Đẹp Đích Thực",
         "hero-title-1": "Công Nghệ",
         "hero-title-2": "Sức Khỏe",
         "hero-title-3": "Tiên Tiến",
@@ -621,7 +621,7 @@ window.translations = {
         "olylife-desc": "Khai thác công nghệ Tera-P90 và PEMF. Các thiết bị Olylife được thiết kế để hồi sinh tế bào, cải thiện lưu thông máu và khôi phục sự cân bằng tự nhiên của cơ thể.",
         "tera-name": "Tera P90+",
         "tera-desc": "Công nghệ cộng hưởng nâng cao cho liệu pháp tế bào sâu và phục hồi cơ thể toàn diện.",
-        "about-intro": "Chúng tôi là nơi kết nối giữa chăm sóc sức khỏe chủ động và làm đẹp toàn diện, mang đến cho khách hàng những giải pháp an toàn – tự nhiên – bền vững.",
+        "about-intro": "Tại Links Beauty & Health Center, chúng tôi tin rằng Sức Khỏe Bên Trong Kiến Tạo Vẻ Đẹp Đích Thực. Chúng tôi là nơi kết nối giữa chăm sóc sức khỏe chủ động và làm đẹp toàn diện, mang đến cho khách hàng những giải pháp an toàn – tự nhiên – bền vững.",
         "about-philosophy": "Với đội ngũ tận tâm và định hướng chăm sóc từ gốc rễ, chúng tôi không chỉ giúp bạn đẹp hơn bên ngoài, mà còn khỏe mạnh từ bên trong.",
         "mission-label": "SỨ MỆNH",
         "mission-text": "TRAO QUYỀN CHO CÁ NHÂN VÀ GIA ĐÌNH ĐẠT ĐƯỢC SỨC KHỎE VÀ VẺ ĐẸP LÂU DÀI THÔNG QUA CÁC GIẢI PHÁP TỰ NHIÊN, AN TOÀN VÀ HIỆU QUẢ.",
@@ -1185,7 +1185,7 @@ window.translations = {
         "why-brands-desc": "Chúng tôi chỉ hợp tác với Hyzen và Olylife—dẫn đầu về hydrogen và wellness tế bào.",
         "why-holistic-title": "Chăm Sóc Toàn Diện",
         "why-holistic-desc": "Chúng tôi tập trung vào sức khỏe nội tại và vẻ đẹp bền vững—giải pháp an toàn, tự nhiên và lâu dài.",
-        "quote-tagline": "Sức khỏe nội tại. Vẻ đẹp đích thực.",
+        "quote-tagline": "\"Sức Khỏe Bên Trong Kiến Tạo Vẻ Đẹp Đích Thực\"",
         "quote-desc": "Tại Links Beauty & Health Center, chúng tôi tin rằng sức khỏe lâu dài bắt đầu từ bên trong. Sản phẩm Hyzen và Olylife chính hãng đồng hành cùng bạn với công nghệ khoa học và sự chăm sóc cá nhân hóa."
     },
     kr: {
