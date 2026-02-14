@@ -5,8 +5,10 @@
     <script>
         (function() {
             var path = window.location.pathname;
-            if (path.endsWith('index.html') || path.endsWith('/index.html')) {
-                var newPath = path.replace(/\/?index\.html$/i, '') || '/';
+            if (path.endsWith('.html')) {
+                var newPath = path.replace(/\.html$/i, '');
+                if (newPath.endsWith('/index') || newPath === 'index' || newPath === '/index') newPath = newPath.replace(/\/?index$/, '') || '/';
+                if (!newPath) newPath = '/';
                 var newUrl = newPath + (window.location.search || '') + (window.location.hash || '');
                 history.replaceState(null, '', newUrl);
             }
