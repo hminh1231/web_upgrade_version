@@ -152,6 +152,7 @@
         { url: 'hyzen-products/hydrogen-tumbler.html', title: 'Hydrogen Water Tumbler', img: 'https://image2url.com/r2/default/images/1770409255553-45c5b747-7531-4a17-acc8-a6d5a2aaa1cd.png', category: 'beauty', desc: 'Portable hydrogen-rich water on the go.' },
         { url: 'hyzen-products/newpower-probiotics.html', title: 'Newpower Probiotics', img: 'assets/hyzen-newpower-probiotics.png', category: 'beauty', desc: 'Dietary supplement for immune and gut health.' },
         { url: 'hyzen-products/platino-graphene-patch.html', title: 'Platino Graphene Patch', img: 'assets/platino-graphene-patch.png', category: 'beauty', desc: 'Graphene patch for wellness support.' },
+        { url: 'hyzen-products/platino-iondenti-toothpaste.html', title: 'Platino Iondenti Functional Toothpaste', img: 'assets/platino-iondenti-toothpaste.png', category: 'beauty', desc: 'Platinum-containing high-performance toothpaste for advanced oral care.' },
         { url: 'olylife-products/h-plus-bar.html', title: 'H+ Bar', img: 'assets/olylife-h-plus-bar.png', category: 'beauty', desc: 'Hydrogen bar for antioxidant support.' },
         { url: 'olylife-products/hydrogen-generator.html', title: 'Hydrogen Generator', img: 'assets/olylife-hydrogen-generator.png', category: 'beauty', desc: 'H₂ and O₂ inhalation for wellness.' },
         { url: 'olylife-products/skyline-sl6.html', title: 'Skyline SL6', img: 'assets/skyline-sl6.png', category: 'beauty', desc: 'Integrated wellness care system.' }
@@ -205,6 +206,7 @@
         { url: 'hyzen-products/hz1100.html', title: 'HZ-1100 Hydrogen Purifier', keywords: 'hz1100 hydrogen purifier water hyzen' },
         { url: 'hyzen-products/newpower-probiotics.html', title: 'Newpower Probiotics', keywords: 'probiotics hyzen supplement' },
         { url: 'hyzen-products/platino-graphene-patch.html', title: 'Platino Graphene Patch', keywords: 'platino graphene patch hyzen' },
+        { url: 'hyzen-products/platino-iondenti-toothpaste.html', title: 'Platino Iondenti Functional Toothpaste', keywords: 'platino iondenti toothpaste dental oral care hyzen' },
         { url: 'olylife-products/olylife.html', title: 'Olylife', keywords: 'olylife cellular terahertz pemf' },
         { url: 'olylife-products/a9purifier.html', title: 'A9 Smart Anion Air Purifier', keywords: 'a9 purifier anion air bama' },
         { url: 'olylife-products/tera-p90.html', title: 'Tera P90+', keywords: 'tera p90 terahertz pemf cellular' },
