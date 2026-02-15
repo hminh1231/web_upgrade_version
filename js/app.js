@@ -380,12 +380,13 @@
         var revealEls = document.querySelectorAll('.reveal');
         [].forEach.call(revealEls, function (elem) {
             if (elem.classList.contains('scroll-motion-left') || elem.classList.contains('scroll-motion-right') || elem.classList.contains('scroll-motion-up')) return;
-            var delay = parseFloat(elem.getAttribute('data-delay')) || 0;
+            var rawDelay = parseFloat(elem.getAttribute('data-delay')) || 0;
+            var delay = Math.min(rawDelay, 0.15);
             gsap.to(elem, {
-                scrollTrigger: { trigger: elem, start: 'top 85%', toggleActions: 'play none none none' },
+                scrollTrigger: { trigger: elem, start: 'top 92%', toggleActions: 'play none none none' },
                 opacity: 1,
                 y: 0,
-                duration: 0.8,
+                duration: 0.45,
                 delay: delay,
                 ease: 'power2.out'
             });
