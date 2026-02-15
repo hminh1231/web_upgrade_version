@@ -412,6 +412,41 @@
         onScroll();
     }
 
+    function initLNYPopUp() {
+        var overlay = document.getElementById('lny-overlay');
+        var bubble = document.getElementById('lny-bubble');
+        var closeBtn = document.getElementById('lny-close');
+        if (!overlay || !bubble) return;
+
+        function showPopup() {
+            overlay.classList.remove('hidden');
+            bubble.classList.add('hidden');
+            overlay.style.opacity = '1';
+            overlay.querySelector('#lny-modal').style.transform = 'scale(1)';
+        }
+        function hidePopup() {
+            overlay.style.opacity = '0';
+            overlay.querySelector('#lny-modal').style.transform = 'scale(0.95)';
+            setTimeout(function () {
+                overlay.classList.add('hidden');
+                bubble.classList.remove('hidden');
+            }, 300);
+            try { sessionStorage.setItem('lny-closed', '1'); } catch (e) {}
+        }
+
+        closeBtn && closeBtn.addEventListener('click', hidePopup);
+        overlay.addEventListener('click', function (e) { if (e.target === overlay) hidePopup(); });
+        bubble.addEventListener('click', showPopup);
+
+        var wasClosed = false;
+        try { wasClosed = sessionStorage.getItem('lny-closed') === '1'; } catch (e) {}
+        if (wasClosed) {
+            bubble.classList.remove('hidden');
+        } else {
+            setTimeout(showPopup, 600);
+        }
+    }
+
     function initPage() {
         var savedLang = localStorage.getItem('links-lang') || 'en';
         currentLang = savedLang;
@@ -421,6 +456,7 @@
         initSearch();
         initNavScroll();
         initAnimations();
+        initLNYPopUp();
     }
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initPage);
