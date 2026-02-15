@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        (function() {
+            var path = window.location.pathname;
+            if (path.endsWith('.html')) {
+                var newPath = path.replace(/\.html$/i, '');
+                if (newPath.endsWith('/index') || newPath === 'index' || newPath === '/index') newPath = newPath.replace(/\/?index$/, '') || '/';
+                if (!newPath) newPath = '/';
+                var newUrl = newPath + (window.location.search || '') + (window.location.hash || '');
+                history.replaceState(null, '', newUrl);
+            }
+        })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="description" content="Platino Skin Care — luxury skin toner and lotion set with platinum. Hydrates, revitalizes, and protects. Premium skincare from Platino by SOLCO. $150.00.">
+    <title>Platino Skin Care (Skin Toner & Lotion) | Hyzen | Links Beauty & Health Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { 'brand-navy': '#1a2a3a', 'brand-gold': '#c5a059', 'brand-cream': '#fdfbf7' } } } };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css?v=1">
+</head>
+<body>
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center relative">
+            <div class="flex items-center gap-3 z-50 relative">
+                <a href="../index.html" class="flex items-center gap-3">
+                    <img src="../assets/logo.png" alt="Links Beauty & Health Center" class="h-14 w-14 object-contain flex-shrink-0">
+                    <span class="flex flex-col">
+                        <span class="logo-links serif font-bold" data-i18n="nav-logo-links">Links</span>
+                        <span class="logo-subtitle" data-i18n="nav-subtitle">Beauty & Health Center</span>
+                    </span>
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-8 items-center">
+                <div class="flex space-x-3 mr-8 border-r border-gray-200 pr-8">
+                    <span class="lang-btn active" onclick="setLanguage('en')">EN</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="lang-btn" onclick="setLanguage('vn')">VN</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="lang-btn" onclick="setLanguage('kr')">KR</span>
+                </div>
+                <a href="../index.html" class="nav-link text-sm font-medium tracking-wide" data-i18n="nav-home">Home</a>
+                <a href="../about.html" class="nav-link text-sm font-medium tracking-wide" data-i18n="nav-about">About Us</a>
+                <div class="group relative">
+                    <a class="nav-link text-sm font-medium tracking-wide flex items-center" data-i18n="nav-brands">
+                        Our Brands
+                        <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="hyzen.html" class="block px-6 py-3 text-sm text-gray-700 hover:bg-brand-cream hover:text-brand-gold">Hyzen</a>
+                        <a href="../olylife-products/olylife.html" class="block px-6 py-3 text-sm text-gray-700 hover:bg-brand-cream hover:text-brand-gold">Olylife</a>
+                    </div>
+                </div>
+                <a href="../index.html#contact" class="btn-outline-gold px-6 py-2 rounded-full text-sm font-bold shadow-sm" data-i18n="nav-contact">Inquire Now</a>
+            </div>
+            <button onclick="toggleMobileMenu()" class="md:hidden text-brand-navy z-50 focus:outline-none p-2 -mr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="menu-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="absolute top-0 left-0 w-full bg-white h-screen flex flex-col pt-24 px-6 md:hidden shadow-xl" style="display: none;">
+            <div class="flex flex-col space-y-6 text-center">
+                <a href="../index.html" class="text-xl font-medium text-brand-navy hover:text-brand-gold" data-i18n="nav-home">Home</a>
+                <a href="../about.html" class="text-xl font-medium text-brand-navy hover:text-brand-gold" data-i18n="nav-about">About Us</a>
+                <div class="border-t border-b border-gray-100 py-4 flex flex-col space-y-4">
+                    <span class="text-sm uppercase tracking-widest text-gray-400" data-i18n="nav-brands">Our Brands</span>
+                    <a href="hyzen.html" class="text-lg text-brand-navy hover:text-brand-gold">Hyzen</a>
+                    <a href="../olylife-products/olylife.html" class="text-lg text-brand-navy hover:text-brand-gold">Olylife</a>
+                </div>
+                <a href="../index.html#contact" class="text-xl font-bold text-brand-gold" data-i18n="nav-contact">Inquire Now</a>
+                <div class="flex justify-center space-x-6 pt-8">
+                    <span class="lang-btn active text-lg" onclick="setLanguage('en')">EN</span>
+                    <span class="lang-btn text-lg" onclick="setLanguage('vn')">VN</span>
+                    <span class="lang-btn text-lg" onclick="setLanguage('kr')">KR</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-12">
+        <div class="container mx-auto px-6 mb-8">
+            <a href="hyzen.html" class="flex items-center text-gray-500 hover:text-brand-gold transition-colors w-fit">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                <span data-i18n="btn-back-hyzen">Back to Hyzen Series</span>
+            </a>
+        </div>
+        <section class="container mx-auto px-6 mb-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1 reveal">
+                    <span class="text-brand-gold font-bold tracking-widest text-xs uppercase mb-2 block">Platino by SOLCO</span>
+                    <h1 class="text-4xl md:text-5xl font-bold text-brand-navy mb-3">Platino Skin Care</h1>
+                    <p class="text-xl text-gray-600 mb-6">Skin Toner & Lotion Set</p>
+                    <p class="text-2xl font-bold text-brand-gold mb-6">$150.00</p>
+                    <p class="text-gray-600 leading-relaxed mb-8">
+                        Luxury skin-care for you. Magnify your skin with platinum. This premium toner and lotion duo hydrates, revitalizes, and protects—helping you take the weight of the stressful world off your skin. Crafted by Platino and SOLCO.
+                    </p>
+                    <a href="../index.html#contact" class="bg-brand-navy text-white px-8 py-4 rounded-full font-bold shadow-xl hover:bg-brand-gold transition-colors w-full md:w-auto inline-block text-center" data-i18n="btn-inquire-product">Inquire Now</a>
+                </div>
+                <div class="order-1 md:order-2 reveal bg-brand-cream rounded-[3rem] p-10 flex items-center justify-center relative overflow-hidden">
+                    <img src="../assets/platino-skin-care.png" class="relative z-10 w-full max-w-sm mx-auto object-contain drop-shadow-2xl" alt="Platino Skin Care – skin toner and lotion set, luxury skincare with platinum, SOLCO">
+                </div>
+            </div>
+        </section>
+
+        <section class="container mx-auto px-6 mb-20 reveal">
+            <div class="rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+                <img src="../assets/platino-skin-care-lifestyle.png" class="w-full h-auto object-cover" alt="Platino Skin Care – woman holding product, radiant hydrated skin, luxury skincare">
+            </div>
+        </section>
+
+        <section class="container mx-auto px-6 mb-20 reveal">
+            <div class="rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+                <img src="../assets/platino-skin-care-luxury.png" class="w-full h-auto object-contain" alt="Platino Skin Care – two bottles on marble with water droplets, orchids, luxury skincare set">
+            </div>
+        </section>
+
+        <section class="container mx-auto px-6 mb-20 reveal">
+            <div class="rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+                <img src="../assets/platino-skin-care-promo.png" class="w-full h-auto object-contain" alt="Platino Skin & Lotion – premium platinum nano-colloid, toner and lotion product overview and benefits">
+            </div>
+        </section>
+
+        <section class="bg-gray-50 py-20 mb-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-2xl font-bold mb-12 text-center text-brand-navy">The Set</h2>
+                <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 reveal">
+                        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-brand-gold/30">
+                            <span class="w-12 h-12 rounded-full bg-brand-gold/15 flex items-center justify-center text-brand-gold font-bold text-lg">1</span>
+                            <h3 class="text-xl font-bold text-brand-navy">Platino Skin Toner</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6 leading-relaxed">A refreshing toner that hydrates and revitalizes tired skin, soothes stress from environmental factors, and delivers moisture and elasticity for healthier-looking skin.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-gray-600"><span class="w-1.5 h-1.5 rounded-full bg-brand-gold mt-2 flex-shrink-0"></span><span>Hydrates and revitalizes tired skin</span></li>
+                            <li class="flex items-start gap-3 text-gray-600"><span class="w-1.5 h-1.5 rounded-full bg-brand-gold mt-2 flex-shrink-0"></span><span>Soothes skin stressed by environmental factors</span></li>
+                            <li class="flex items-start gap-3 text-gray-600"><span class="w-1.5 h-1.5 rounded-full bg-brand-gold mt-2 flex-shrink-0"></span><span>Delivers moisture and elasticity for healthier-looking skin</span></li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 reveal">
+                        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-brand-gold/30">
+                            <span class="w-12 h-12 rounded-full bg-brand-gold/15 flex items-center justify-center text-brand-gold font-bold text-lg">2</span>
+                            <h3 class="text-xl font-bold text-brand-navy">Platino Lotion</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6 leading-relaxed">A premium emulsion that helps maintain and protect the skin's balance. Soft texture with deep moisturizing care that calms and protects the skin.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-gray-600"><span class="w-1.5 h-1.5 rounded-full bg-brand-gold mt-2 flex-shrink-0"></span><span>Maintains and protects the skin's balance</span></li>
+                            <li class="flex items-start gap-3 text-gray-600"><span class="w-1.5 h-1.5 rounded-full bg-brand-gold mt-2 flex-shrink-0"></span><span>Soft texture with deep moisturizing care</span></li>
+                            <li class="flex items-start gap-3 text-gray-600"><span class="w-1.5 h-1.5 rounded-full bg-brand-gold mt-2 flex-shrink-0"></span><span>Calms and protects the skin</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container mx-auto px-6 mb-20 reveal">
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="text-gray-500 text-sm uppercase tracking-widest mb-2">Complete hydration routine</p>
+                <h2 class="text-2xl font-bold text-brand-navy mb-4">Toner + Lotion. One set. Radiant results.</h2>
+                <p class="text-gray-600 mb-6">Apply toner first to prep and hydrate, then follow with lotion to lock in moisture and protect. For best results, use morning and evening as part of your skincare ritual.</p>
+            </div>
+        </section>
+
+        <section class="bg-brand-navy text-white py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h3 class="text-3xl font-bold mb-2">Platino Skin Care</h3>
+                <p class="text-gray-400 mb-4">Skin Toner & Lotion Set</p>
+                <p class="text-3xl font-bold text-brand-gold mb-8">$150.00</p>
+                <p class="text-gray-400 max-w-xl mx-auto mb-10">Luxury platinum-infused skincare. Hydrate, revitalize, and protect with our premium toner and lotion duo. Inquire for availability.</p>
+                <a href="../index.html#contact" class="bg-brand-gold text-brand-navy px-10 py-4 rounded-full font-bold hover:bg-white transition-colors inline-block" data-i18n="btn-inquire-product">Inquire Now</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white pt-20 pb-10 border-t border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start mb-16 gap-12">
+                <div>
+                    <a href="../index.html" class="flex items-center gap-3 mb-6">
+                        <img src="../assets/logo.png" alt="Links Beauty & Health Center" class="h-14 w-14 object-contain flex-shrink-0">
+                        <span class="flex flex-col">
+                            <span class="logo-links serif font-bold" data-i18n="nav-logo-links">Links</span>
+                            <span class="logo-subtitle" data-i18n="nav-subtitle">Beauty & Health Center</span>
+                        </span>
+                    </a>
+                    <p class="text-gray-500 text-sm italic font-medium" data-i18n="hero-slogan">"Inner Health Shapes True Beauty"</p>
+                </div>
+                <div class="flex flex-wrap gap-12">
+                    <div>
+                        <h4 class="font-bold mb-6 uppercase text-xs tracking-widest" data-i18n="nav-logo-links">Links</h4>
+                        <ul class="space-y-3 text-sm text-gray-600">
+                            <li><a href="../index.html" class="hover:text-brand-gold" data-i18n="nav-home">Home</a></li>
+                            <li><a href="../about.html" class="hover:text-brand-gold" data-i18n="nav-about">About Us</a></li>
+                            <li><a href="../olylife-products/olylife.html" class="hover:text-brand-gold" data-i18n="footer-olylife-page">Olylife Page</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 uppercase text-xs tracking-widest" data-i18n="footer-partners">Partners</h4>
+                        <ul class="space-y-3 text-sm text-gray-600">
+                            <li data-i18n="footer-hyzen-global">Hyzen Global</li>
+                            <li data-i18n="footer-olylife-international">Olylife International</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-[10px] text-gray-400 uppercase tracking-widest">
+                <p>&copy; 2026 <span data-i18n="nav-logo-links">Links</span> <span data-i18n="nav-subtitle">Beauty & Health Center</span>. <span data-i18n="footer-rights">Information portal. No direct sales.</span></p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/translations.js?v=1"></script>
+    <script src="../js/app.js?v=1"></script>
+</body>
+</html>
