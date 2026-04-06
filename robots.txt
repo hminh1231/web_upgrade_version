@@ -1,0 +1,8 @@
+# Links Beauty & Health Center — robots.txt for search engine submission
+# Allow all crawlers. Replace yourdomain.com with your actual domain.
+
+User-agent: *
+Allow: /
+
+# Sitemap (replace with your live site URL when deploying)
+Sitemap: https://yourdomain.com/sitemap.xml
